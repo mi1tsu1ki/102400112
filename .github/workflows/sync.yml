@@ -1,0 +1,21 @@
+name: Sync to Huawei CodeArts
+
+# 當有代碼 push 到 main 分支時觸發此腳本
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Push to Huawei Cloud
+        # 使用 GitHub Secrets 裡的帳號密碼，將代碼強制推送到華為雲的 main 分支
+        run: |
+          git remote add huawei https://${{ secrets.HUAWEI_USER }}:${{ secrets.HUAWEI_PWD }}@codehub.devcloud.cn-north-4.huaweicloud.com/0663d8c066344da1b90da29f13d9c0c7/102400112.git
+          git push -u huawei main
