@@ -5,6 +5,8 @@ import sqlite3
 
 from flask import Flask, jsonify, request, send_from_directory
 
+from nlp_processor import analyze_hot_topics, build_keyword_graph
+
 
 BASE_DIR = Path(__file__).resolve().parent
 DATABASE_PATH = BASE_DIR / "data" / "conference_terms.db"
@@ -43,6 +45,18 @@ def list_terms():
         return jsonify([dict(row) for row in rows])
     finally:
         connection.close()
+
+
+@app.get("/api/hot-topics")
+def hot_topics():
+    """回傳依詞頻排序的 Top 10 熱門研究方向。"""
+    return jsonify(analyze_hot_topics(DATABASE_PATH))
+
+
+@app.get("/api/keyword-graph")
+def keyword_graph():
+    """回傳 ECharts graph 使用的節點與共現連線。"""
+    return jsonify(build_keyword_graph(DATABASE_PATH))
 
 
 if __name__ == "__main__":
