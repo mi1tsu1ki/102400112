@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>頂會熱詞統計平台</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/element-plus/dist/index.css"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main id="app" class="container">
+      <header>
+        <p class="eyebrow">CONFERENCE INSIGHTS</p>
+        <h1>頂會熱詞統計平台</h1>
+        <p class="subtitle">快速探索近期學術會議中的研究關注焦點。</p>
+      </header>
+
+      <el-card shadow="never">
+        <div class="toolbar">
+          <el-input
+            v-model="keyword"
+            placeholder="搜尋熱詞或分類"
+            clearable
+            @keyup.enter="loadTerms"
+          />
+          <el-button type="primary" @click="loadTerms">搜尋</el-button>
+        </div>
+        <el-table v-loading="loading" :data="terms" stripe>
+          <el-table-column prop="term" label="熱詞" min-width="220" />
+          <el-table-column prop="category" label="分類" width="180" />
+          <el-table-column prop="frequency" label="出現次數" width="140" sortable />
+          <el-table-column label="趨勢" width="120">
+            <template #default="scope">
+              <el-tag :type="trendType(scope.row.trend)">
+                {{ trendLabel(scope.row.trend) }}
+              </el-tag>
+            </template>
+          </el-table-column>
+          <el-table-column prop="updated_at" label="更新時間" min-width="180" />
+        </el-table>
+        <el-empty v-if="!loading && terms.length === 0" description="找不到符合的熱詞" />
+      </el-card>
+    </main>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/element-plus"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>
