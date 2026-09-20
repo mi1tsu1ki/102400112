@@ -47,6 +47,31 @@ def list_terms():
         connection.close()
 
 
+@app.get("/api/papers")
+def list_papers():
+    """Return crawled papers for the paper-management table."""
+    connection = get_db_connection()
+    try:
+        table_exists = connection.execute(
+            """
+            SELECT 1 FROM sqlite_master
+            WHERE type = 'table' AND name = 'papers'
+            """
+        ).fetchone()
+        if table_exists is None:
+            return jsonify([])
+        rows = connection.execute(
+            """
+            SELECT title, year, authors, ee
+            FROM papers
+            ORDER BY year DESC, title ASC
+            """
+        ).fetchall()
+        return jsonify([dict(row) for row in rows])
+    finally:
+        connection.close()
+
+
 @app.get("/api/hot-topics")
 def hot_topics():
     """回傳依詞頻排序的 Top 10 熱門研究方向。"""
