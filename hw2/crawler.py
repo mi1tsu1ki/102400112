@@ -29,6 +29,8 @@ DBLP_API_URL = "https://dblp.org/search/publ/api"
 DEFAULT_PAGE_SIZE = 100
 DEFAULT_REQUEST_DELAY = 1.0
 REQUEST_TIMEOUT = 20
+MAX_RETRIES = 3
+RETRY_DELAY = 2.0
 
 
 def _create_papers_table(connection: sqlite3.Connection) -> None:
@@ -98,17 +100,39 @@ def _request_page(
     page_size: int,
     session: requests.Session,
 ) -> dict[str, Any]:
-    """請求 DBLP 單頁資料，錯誤會以例外明確向呼叫端回報。"""
-    response = session.get(
-        DBLP_API_URL,
-        params={"q": query, "format": "json", "h": page_size, "f": offset},
-        timeout=REQUEST_TIMEOUT,
-    )
-    response.raise_for_status()
-    payload = response.json()
-    if not isinstance(payload, dict):
-        raise ValueError("DBLP API 回傳格式不是 JSON 物件")
-    return payload
+    """請求 DBLP 單頁資料；失敗時重試，最終以空字典安全結束。
+
+    MAX_RETRIES 代表第一次請求失敗後的重試次數，因此最多會執行
+    1 次初始請求加上 3 次重試。HTTP 錯誤、連線錯誤、逾時與 JSON
+    格式錯誤都會進入相同的重試流程。
+    """
+    params = {"q": query, "format": "json", "h": page_size, "f": offset}
+    for attempt in range(MAX_RETRIES + 1):
+        try:
+            response = session.get(
+                DBLP_API_URL,
+                params=params,
+                timeout=REQUEST_TIMEOUT,
+            )
+            response.raise_for_status()
+            payload = response.json()
+            if not isinstance(payload, dict):
+                raise ValueError("DBLP API 回傳格式不是 JSON 物件")
+            return payload
+        except (requests.RequestException, ValueError) as error:
+            attempt_number = attempt + 1
+            if attempt < MAX_RETRIES:
+                print(
+                    f"[WARN] DBLP API 請求失敗（第 {attempt_number} 次）："
+                    f"{error}；{RETRY_DELAY:g} 秒後重試。"
+                )
+                time.sleep(RETRY_DELAY)
+            else:
+                print(
+                    f"[ERROR] DBLP API 請求重試 {MAX_RETRIES} 次後仍失敗："
+                    f"{error}"
+                )
+    return {}
 
 
 def search_paper_exact(
@@ -128,7 +152,9 @@ def search_paper_exact(
 
     client = session or requests.Session()
     payload = _request_page(f'"{title.strip()}"', 0, DEFAULT_PAGE_SIZE, client)
-    hits = payload.get("result", {}).get("hits", {}).get("hit", [])
+    result = payload.get("result", {})
+    hits_data = result.get("hits", {}) if isinstance(result, dict) else {}
+    hits = hits_data.get("hit", []) if isinstance(hits_data, dict) else []
     if isinstance(hits, dict):
         hits = [hits]
     for hit in hits:
@@ -171,7 +197,13 @@ def fetch_conference_papers(
         while total is None or offset < total:
             payload = _request_page(query, offset, page_size, client)
             result = payload.get("result", {})
+            if not isinstance(result, dict):
+                print("[ERROR] DBLP API 回傳缺少有效的 result，停止目前年份抓取。")
+                break
             hits_data = result.get("hits", {})
+            if not isinstance(hits_data, dict):
+                print("[ERROR] DBLP API 回傳缺少有效的 hits，停止目前年份抓取。")
+                break
             hits = hits_data.get("hit", [])
             if isinstance(hits, dict):
                 hits = [hits]
