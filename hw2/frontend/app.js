@@ -13,6 +13,15 @@ createApp({
     const keyword = ref("");
     const loading = ref(false);
     const papers = ref([]);
+    const crawlDialogVisible = ref(false);
+    const crawlLoading = ref(false);
+    const crawlFormRef = ref(null);
+    const crawlForm = ref({ conference: "", year: null });
+    const availableYears = [2022, 2023, 2024, 2025, 2026];
+    const crawlRules = {
+      conference: [{ required: true, message: "請選擇會議名稱", trigger: "change" }],
+      year: [{ required: true, message: "請選擇年份", trigger: "change" }],
+    };
     const graphContainer = ref(null);
     const racingContainer = ref(null);
     let graphChart = null;
@@ -37,6 +46,32 @@ createApp({
         ElMessage.error(error.message);
       } finally {
         loading.value = false;
+      }
+    };
+
+    const submitCrawl = async () => {
+      if (!crawlFormRef.value) return;
+      const valid = await crawlFormRef.value.validate().catch(() => false);
+      if (!valid) return;
+
+      crawlLoading.value = true;
+      try {
+        const response = await fetch("/api/crawl", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(crawlForm.value),
+        });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "爬取資料失敗");
+        ElMessage.success(
+          `完成：取得 ${result.fetched_count} 篇，寫入 ${result.saved_count} 筆`,
+        );
+        crawlDialogVisible.value = false;
+        await loadPapers();
+      } catch (error) {
+        ElMessage.error(error.message);
+      } finally {
+        crawlLoading.value = false;
       }
     };
 
@@ -137,9 +172,16 @@ createApp({
       keyword,
       loading,
       filteredPapers,
+      crawlDialogVisible,
+      crawlLoading,
+      crawlFormRef,
+      crawlForm,
+      crawlRules,
+      availableYears,
       graphContainer,
       racingContainer,
       loadPapers,
+      submitCrawl,
       loadKeywordGraph,
       restartRace,
       handleTabChange,

@@ -5,6 +5,7 @@ import sqlite3
 
 from flask import Flask, jsonify, request, send_from_directory
 
+from crawler import fetch_conference_papers, save_papers_to_db
 from nlp_processor import analyze_hot_topics, build_keyword_graph
 
 
@@ -70,6 +71,37 @@ def list_papers():
         return jsonify([dict(row) for row in rows])
     finally:
         connection.close()
+
+
+@app.post("/api/crawl")
+def crawl_papers():
+    """Fetch and persist papers for one supported conference and year."""
+    payload = request.get_json(silent=True) or {}
+    conference = str(payload.get("conference", "")).strip().upper()
+    year = payload.get("year")
+    supported_conferences = {"CVPR", "ICCV", "ECCV"}
+
+    if conference not in supported_conferences:
+        return jsonify({"error": "conference 必須是 CVPR、ICCV 或 ECCV"}), 400
+    try:
+        year = int(year)
+    except (TypeError, ValueError):
+        return jsonify({"error": "year 必須是有效年份"}), 400
+    if year < 1900 or year > 2100:
+        return jsonify({"error": "year 必須介於 1900 到 2100"}), 400
+
+    try:
+        papers = fetch_conference_papers(conference, year)
+        saved_count = save_papers_to_db(papers, DATABASE_PATH)
+    except (OSError, TypeError, ValueError, sqlite3.Error) as error:
+        app.logger.exception("Crawl failed for %s %s", conference, year)
+        return jsonify({"error": f"爬取資料失敗：{error}"}), 500
+    return jsonify({
+        "conference": conference,
+        "year": year,
+        "fetched_count": len(papers),
+        "saved_count": saved_count,
+    })
 
 
 @app.get("/api/hot-topics")

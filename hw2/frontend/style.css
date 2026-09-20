@@ -45,6 +45,10 @@ h1 {
   max-width: 420px;
 }
 
+.full-width {
+  width: 100%;
+}
+
 .panel-heading {
   align-items: center;
   display: flex;

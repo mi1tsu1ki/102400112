@@ -28,6 +28,9 @@
                 clearable
               />
               <el-button type="primary" @click="loadPapers">搜尋</el-button>
+              <el-button type="success" @click="crawlDialogVisible = true">
+                爬取資料
+              </el-button>
             </div>
             <el-table v-loading="loading" :data="filteredPapers" stripe>
               <el-table-column prop="title" label="論文標題" min-width="360" />
@@ -47,6 +50,42 @@
             </el-table>
             <el-empty v-if="!loading && filteredPapers.length === 0" description="目前沒有論文資料" />
           </el-card>
+
+          <el-dialog v-model="crawlDialogVisible" title="爬取會議論文" width="420px">
+            <el-form
+              ref="crawlFormRef"
+              :model="crawlForm"
+              :rules="crawlRules"
+              label-position="top"
+              @submit.prevent
+            >
+              <el-form-item label="會議名稱" prop="conference">
+                <el-select v-model="crawlForm.conference" placeholder="請選擇會議" class="full-width">
+                  <el-option label="CVPR" value="CVPR" />
+                  <el-option label="ICCV" value="ICCV" />
+                  <el-option label="ECCV" value="ECCV" />
+                </el-select>
+              </el-form-item>
+              <el-form-item label="年份" prop="year">
+                <el-select v-model="crawlForm.year" placeholder="請選擇年份" class="full-width">
+                  <el-option
+                    v-for="year in availableYears"
+                    :key="year"
+                    :label="String(year)"
+                    :value="year"
+                  />
+                </el-select>
+              </el-form-item>
+            </el-form>
+            <template #footer>
+              <el-button @click="crawlDialogVisible = false" :disabled="crawlLoading">
+                取消
+              </el-button>
+              <el-button type="primary" :loading="crawlLoading" @click="submitCrawl">
+                開始爬取
+              </el-button>
+            </template>
+          </el-dialog>
         </el-tab-pane>
 
         <el-tab-pane label="熱門圖譜" name="graph">
