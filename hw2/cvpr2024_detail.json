@@ -1,0 +1,697 @@
+[
+  {
+    "title": "Unmixing Diffusion for Self-Supervised Hyperspectral Image Denoising",
+    "authors": [
+      "Zeng, Haijin",
+      "Cao, Jiezhang",
+      "Zhang, Kai",
+      "Chen, Yongyong",
+      "Luong, Hiep",
+      "Philips, Wilfried"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zeng_Unmixing_Diffusion_for_Self-Supervised_Hyperspectral_Image_Denoising_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zeng_Unmixing_Diffusion_for_Self-Supervised_Hyperspectral_Image_Denoising_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Seeing the World through Your Eyes",
+    "authors": [
+      "Alzayer, Hadi",
+      "Zhang, Kevin",
+      "Feng, Brandon",
+      "Metzler, Christopher A.",
+      "Huang, Jia-Bin"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Alzayer_Seeing_the_World_through_Your_Eyes_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Alzayer_Seeing_the_World_through_Your_Eyes_CVPR_2024_paper.html"
+  },
+  {
+    "title": "DPMesh: Exploiting Diffusion Prior for Occluded Human Mesh Recovery",
+    "authors": [
+      "Zhu, Yixuan",
+      "Li, Ao",
+      "Tang, Yansong",
+      "Zhao, Wenliang",
+      "Zhou, Jie",
+      "Lu, Jiwen"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zhu_DPMesh_Exploiting_Diffusion_Prior_for_Occluded_Human_Mesh_Recovery_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zhu_DPMesh_Exploiting_Diffusion_Prior_for_Occluded_Human_Mesh_Recovery_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Ungeneralizable Examples",
+    "authors": [
+      "Ye, Jingwen",
+      "Wang, Xinchao"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Ye_Ungeneralizable_Examples_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Ye_Ungeneralizable_Examples_CVPR_2024_paper.html"
+  },
+  {
+    "title": "LaneCPP: Continuous 3D Lane Detection using Physical Priors",
+    "authors": [
+      "Pittner, Maximilian",
+      "Janai, Joel",
+      "Condurache, Alexandru P."
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Pittner_LaneCPP_Continuous_3D_Lane_Detection_using_Physical_Priors_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Pittner_LaneCPP_Continuous_3D_Lane_Detection_using_Physical_Priors_CVPR_2024_paper.html"
+  },
+  {
+    "title": "CityDreamer: Compositional Generative Model of Unbounded 3D Cities",
+    "authors": [
+      "Xie, Haozhe",
+      "Chen, Zhaoxi",
+      "Hong, Fangzhou",
+      "Liu, Ziwei"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Xie_CityDreamer_Compositional_Generative_Model_of_Unbounded_3D_Cities_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Xie_CityDreamer_Compositional_Generative_Model_of_Unbounded_3D_Cities_CVPR_2024_paper.html"
+  },
+  {
+    "title": "HEAL-SWIN: A Vision Transformer On The Sphere",
+    "authors": [
+      "Carlsson, Oscar",
+      "Gerken, Jan E.",
+      "Linander, Hampus",
+      "Spieß, Heiner",
+      "Ohlsson, Fredrik",
+      "Petersson, Christoffer",
+      "Persson, Daniel"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Carlsson_HEAL-SWIN_A_Vision_Transformer_On_The_Sphere_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Carlsson_HEAL-SWIN_A_Vision_Transformer_On_The_Sphere_CVPR_2024_paper.html"
+  },
+  {
+    "title": "3D Paintbrush: Local Stylization of 3D Shapes with Cascaded Score Distillation",
+    "authors": [
+      "Decatur, Dale",
+      "Lang, Itai",
+      "Aberman, Kfir",
+      "Hanocka, Rana"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Decatur_3D_Paintbrush_Local_Stylization_of_3D_Shapes_with_Cascaded_Score_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Decatur_3D_Paintbrush_Local_Stylization_of_3D_Shapes_with_Cascaded_Score_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Test-Time Linear Out-of-Distribution Detection",
+    "authors": [
+      "Fan, Ke",
+      "Liu, Tong",
+      "Qiu, Xingyu",
+      "Wang, Yikai",
+      "Huai, Lian",
+      "Shangguan, Zeyu",
+      "Gou, Shuang",
+      "Liu, Fengjian",
+      "Fu, Yuqian",
+      "Fu, Yanwei",
+      "Jiang, Xingqun"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Fan_Test-Time_Linear_Out-of-Distribution_Detection_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Fan_Test-Time_Linear_Out-of-Distribution_Detection_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Guided Slot Attention for Unsupervised Video Object Segmentation",
+    "authors": [
+      "Lee, Minhyeok",
+      "Cho, Suhwan",
+      "Lee, Dogyoon",
+      "Park, Chaewon",
+      "Lee, Jungho",
+      "Lee, Sangyoun"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Lee_Guided_Slot_Attention_for_Unsupervised_Video_Object_Segmentation_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Lee_Guided_Slot_Attention_for_Unsupervised_Video_Object_Segmentation_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Unsupervised Blind Image Deblurring Based on Self-Enhancement",
+    "authors": [
+      "Chen, Lufei",
+      "Tian, Xiangpeng",
+      "Xiong, Shuhua",
+      "Lei, Yinjie",
+      "Ren, Chao"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Chen_Unsupervised_Blind_Image_Deblurring_Based_on_Self-Enhancement_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Chen_Unsupervised_Blind_Image_Deblurring_Based_on_Self-Enhancement_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Action Detection via an Image Diffusion Process",
+    "authors": [
+      "Foo, Lin Geng",
+      "Li, Tianjiao",
+      "Rahmani, Hossein",
+      "Liu, Jun"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Foo_Action_Detection_via_an_Image_Diffusion_Process_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Foo_Action_Detection_via_an_Image_Diffusion_Process_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Programmable Motion Generation for Open-Set Motion Control Tasks",
+    "authors": [
+      "Liu, Hanchao",
+      "Zhan, Xiaohang",
+      "Huang, Shaoli",
+      "Mu, Tai-Jiang",
+      "Shan, Ying"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Liu_Programmable_Motion_Generation_for_Open-Set_Motion_Control_Tasks_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Liu_Programmable_Motion_Generation_for_Open-Set_Motion_Control_Tasks_CVPR_2024_paper.html"
+  },
+  {
+    "title": "SCE-MAE: Selective Correspondence Enhancement with Masked Autoencoder for Self-Supervised Landmark Estimation",
+    "authors": [
+      "Yin, Kejia",
+      "Rao, Varshanth",
+      "Jiang, Ruowei",
+      "Liu, Xudong",
+      "Aarabi, Parham",
+      "Lindell, David B."
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Yin_SCE-MAE_Selective_Correspondence_Enhancement_with_Masked_Autoencoder_for_Self-Supervised_Landmark_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Yin_SCE-MAE_Selective_Correspondence_Enhancement_with_Masked_Autoencoder_for_Self-Supervised_Landmark_CVPR_2024_paper.html"
+  },
+  {
+    "title": "LAKE-RED: Camouflaged Images Generation by Latent Background Knowledge Retrieval-Augmented Diffusion",
+    "authors": [
+      "Zhao, Pancheng",
+      "Xu, Peng",
+      "Qin, Pengda",
+      "Fan, Deng-Ping",
+      "Zhang, Zhicheng",
+      "Jia, Guoli",
+      "Zhou, Bowen",
+      "Yang, Jufeng"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zhao_LAKE-RED_Camouflaged_Images_Generation_by_Latent_Background_Knowledge_Retrieval-Augmented_Diffusion_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zhao_LAKE-RED_Camouflaged_Images_Generation_by_Latent_Background_Knowledge_Retrieval-Augmented_Diffusion_CVPR_2024_paper.html"
+  },
+  {
+    "title": "TIGER: Time-Varying Denoising Model for 3D Point Cloud Generation with Diffusion Process",
+    "authors": [
+      "Ren, Zhiyuan",
+      "Kim, Minchul",
+      "Liu, Feng",
+      "Liu, Xiaoming"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Ren_TIGER_Time-Varying_Denoising_Model_for_3D_Point_Cloud_Generation_with_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Ren_TIGER_Time-Varying_Denoising_Model_for_3D_Point_Cloud_Generation_with_CVPR_2024_paper.html"
+  },
+  {
+    "title": "ConTex-Human: Free-View Rendering of Human from a Single Image with Texture-Consistent Synthesis",
+    "authors": [
+      "Gao, Xiangjun",
+      "Li, Xiaoyu",
+      "Zhang, Chaopeng",
+      "Zhang, Qi",
+      "Cao, Yanpei",
+      "Shan, Ying",
+      "Quan, Long"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Gao_ConTex-Human_Free-View_Rendering_of_Human_from_a_Single_Image_with_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Gao_ConTex-Human_Free-View_Rendering_of_Human_from_a_Single_Image_with_CVPR_2024_paper.html"
+  },
+  {
+    "title": "UFineBench: Towards Text-based Person Retrieval with Ultra-fine Granularity",
+    "authors": [
+      "Zuo, Jialong",
+      "Zhou, Hanyu",
+      "Nie, Ying",
+      "Zhang, Feng",
+      "Guo, Tianyu",
+      "Sang, Nong",
+      "Wang, Yunhe",
+      "Gao, Changxin"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zuo_UFineBench_Towards_Text-based_Person_Retrieval_with_Ultra-fine_Granularity_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zuo_UFineBench_Towards_Text-based_Person_Retrieval_with_Ultra-fine_Granularity_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Efficient Hyperparameter Optimization with Adaptive Fidelity Identification",
+    "authors": [
+      "Jiang, Jiantong",
+      "Wen, Zeyi",
+      "Mansoor, Atif",
+      "Mian, Ajmal"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Jiang_Efficient_Hyperparameter_Optimization_with_Adaptive_Fidelity_Identification_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Jiang_Efficient_Hyperparameter_Optimization_with_Adaptive_Fidelity_Identification_CVPR_2024_paper.html"
+  },
+  {
+    "title": "ASH: Animatable Gaussian Splats for Efficient and Photoreal Human Rendering",
+    "authors": [
+      "Pang, Haokai",
+      "Zhu, Heming",
+      "Kortylewski, Adam",
+      "Theobalt, Christian",
+      "Habermann, Marc"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Pang_ASH_Animatable_Gaussian_Splats_for_Efficient_and_Photoreal_Human_Rendering_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Pang_ASH_Animatable_Gaussian_Splats_for_Efficient_and_Photoreal_Human_Rendering_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Focus on Hiders: Exploring Hidden Threats for Enhancing Adversarial Training",
+    "authors": [
+      "Li, Qian",
+      "Hu, Yuxiao",
+      "Dong, Yinpeng",
+      "Zhang, Dongxiao",
+      "Chen, Yuntian"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Li_Focus_on_Hiders_Exploring_Hidden_Threats_for_Enhancing_Adversarial_Training_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Li_Focus_on_Hiders_Exploring_Hidden_Threats_for_Enhancing_Adversarial_Training_CVPR_2024_paper.html"
+  },
+  {
+    "title": "ArtAdapter: Text-to-Image Style Transfer using Multi-Level Style Encoder and Explicit Adaptation",
+    "authors": [
+      "Chen, Dar-Yen",
+      "Tennent, Hamish",
+      "Hsu, Ching-Wen"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Chen_ArtAdapter_Text-to-Image_Style_Transfer_using_Multi-Level_Style_Encoder_and_Explicit_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Chen_ArtAdapter_Text-to-Image_Style_Transfer_using_Multi-Level_Style_Encoder_and_Explicit_CVPR_2024_paper.html"
+  },
+  {
+    "title": "GoodSAM: Bridging Domain and Capacity Gaps via Segment Anything Model for Distortion-aware Panoramic Semantic Segmentation",
+    "authors": [
+      "Zhang, Weiming",
+      "Liu, Yexin",
+      "Zheng, Xu",
+      "Wang, Lin"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zhang_GoodSAM_Bridging_Domain_and_Capacity_Gaps_via_Segment_Anything_Model_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zhang_GoodSAM_Bridging_Domain_and_Capacity_Gaps_via_Segment_Anything_Model_CVPR_2024_paper.html"
+  },
+  {
+    "title": "DYSON: Dynamic Feature Space Self-Organization for Online Task-Free Class Incremental Learning",
+    "authors": [
+      "He, Yuhang",
+      "Chen, Yingjie",
+      "Jin, Yuhan",
+      "Dong, Songlin",
+      "Wei, Xing",
+      "Gong, Yihong"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/He_DYSON_Dynamic_Feature_Space_Self-Organization_for_Online_Task-Free_Class_Incremental_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/He_DYSON_Dynamic_Feature_Space_Self-Organization_for_Online_Task-Free_Class_Incremental_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Streaming Dense Video Captioning",
+    "authors": [
+      "Zhou, Xingyi",
+      "Arnab, Anurag",
+      "Buch, Shyamal",
+      "Yan, Shen",
+      "Myers, Austin",
+      "Xiong, Xuehan",
+      "Nagrani, Arsha",
+      "Schmid, Cordelia"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zhou_Streaming_Dense_Video_Captioning_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zhou_Streaming_Dense_Video_Captioning_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Rethinking Inductive Biases for Surface Normal Estimation",
+    "authors": [
+      "Bae, Gwangbin",
+      "Davison, Andrew J."
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Bae_Rethinking_Inductive_Biases_for_Surface_Normal_Estimation_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Bae_Rethinking_Inductive_Biases_for_Surface_Normal_Estimation_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Event-based Structure-from-Orbit",
+    "authors": [
+      "Elms, Ethan",
+      "Latif, Yasir",
+      "Park, Tae Ha",
+      "Chin, Tat-Jun"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Elms_Event-based_Structure-from-Orbit_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Elms_Event-based_Structure-from-Orbit_CVPR_2024_paper.html"
+  },
+  {
+    "title": "LED: A Large-scale Real-world Paired Dataset for Event Camera Denoising",
+    "authors": [
+      "Duan, Yuxing"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Duan_LED_A_Large-scale_Real-world_Paired_Dataset_for_Event_Camera_Denoising_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Duan_LED_A_Large-scale_Real-world_Paired_Dataset_for_Event_Camera_Denoising_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Fair Federated Learning under Domain Skew with Local Consistency and Domain Diversity",
+    "authors": [
+      "Chen, Yuhang",
+      "Huang, Wenke",
+      "Ye, Mang"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Chen_Fair_Federated_Learning_under_Domain_Skew_with_Local_Consistency_and_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Chen_Fair_Federated_Learning_under_Domain_Skew_with_Local_Consistency_and_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Activity-Biometrics: Person Identification from Daily Activities",
+    "authors": [
+      "Azad, Shehreen",
+      "Rawat, Yogesh Singh"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Azad_Activity-Biometrics_Person_Identification_from_Daily_Activities_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Azad_Activity-Biometrics_Person_Identification_from_Daily_Activities_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Z*: Zero-shot Style Transfer via Attention Reweighting",
+    "authors": [
+      "Deng, Yingying",
+      "He, Xiangyu",
+      "Tang, Fan",
+      "Dong, Weiming"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Deng_Z_Zero-shot_Style_Transfer_via_Attention_Reweighting_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Deng_Z_Zero-shot_Style_Transfer_via_Attention_Reweighting_CVPR_2024_paper.html"
+  },
+  {
+    "title": "HIG: Hierarchical Interlacement Graph Approach to Scene Graph Generation in Video Understanding",
+    "authors": [
+      "Nguyen, Trong-Thuan",
+      "Nguyen, Pha",
+      "Luu, Khoa"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Nguyen_HIG_Hierarchical_Interlacement_Graph_Approach_to_Scene_Graph_Generation_in_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Nguyen_HIG_Hierarchical_Interlacement_Graph_Approach_to_Scene_Graph_Generation_in_CVPR_2024_paper.html"
+  },
+  {
+    "title": "OOSTraj: Out-of-Sight Trajectory Prediction With Vision-Positioning Denoising",
+    "authors": [
+      "Zhang, Haichao",
+      "Xu, Yi",
+      "Lu, Hongsheng",
+      "Shimizu, Takayuki",
+      "Fu, Yun"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zhang_OOSTraj_Out-of-Sight_Trajectory_Prediction_With_Vision-Positioning_Denoising_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zhang_OOSTraj_Out-of-Sight_Trajectory_Prediction_With_Vision-Positioning_Denoising_CVPR_2024_paper.html"
+  },
+  {
+    "title": "FADES: Fair Disentanglement with Sensitive Relevance",
+    "authors": [
+      "Jang, Taeuk",
+      "Wang, Xiaoqian"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Jang_FADES_Fair_Disentanglement_with_Sensitive_Relevance_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Jang_FADES_Fair_Disentanglement_with_Sensitive_Relevance_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Learning Continuous 3D Words for Text-to-Image Generation",
+    "authors": [
+      "Cheng, Ta-Ying",
+      "Gadelha, Matheus",
+      "Groueix, Thibault",
+      "Fisher, Matthew",
+      "Mech, Radomir",
+      "Markham, Andrew",
+      "Trigoni, Niki"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Cheng_Learning_Continuous_3D_Words_for_Text-to-Image_Generation_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Cheng_Learning_Continuous_3D_Words_for_Text-to-Image_Generation_CVPR_2024_paper.html"
+  },
+  {
+    "title": "MarkovGen: Structured Prediction for Efficient Text-to-Image Generation",
+    "authors": [
+      "Jayasumana, Sadeep",
+      "Glasner, Daniel",
+      "Ramalingam, Srikumar",
+      "Veit, Andreas",
+      "Chakrabarti, Ayan",
+      "Kumar, Sanjiv"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Jayasumana_MarkovGen_Structured_Prediction_for_Efficient_Text-to-Image_Generation_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Jayasumana_MarkovGen_Structured_Prediction_for_Efficient_Text-to-Image_Generation_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Self-Supervised Class-Agnostic Motion Prediction with Spatial and Temporal Consistency Regularizations",
+    "authors": [
+      "Wang, Kewei",
+      "Wu, Yizheng",
+      "Cen, Jun",
+      "Pan, Zhiyu",
+      "Li, Xingyi",
+      "Wang, Zhe",
+      "Cao, Zhiguo",
+      "Lin, Guosheng"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Wang_Self-Supervised_Class-Agnostic_Motion_Prediction_with_Spatial_and_Temporal_Consistency_Regularizations_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Wang_Self-Supervised_Class-Agnostic_Motion_Prediction_with_Spatial_and_Temporal_Consistency_Regularizations_CVPR_2024_paper.html"
+  },
+  {
+    "title": "HashPoint: Accelerated Point Searching and Sampling for Neural Rendering",
+    "authors": [
+      "Ma, Jiahao",
+      "Liu, Miaomiao",
+      "Ahmedt-Aristizabal, David",
+      "Nguyen, Chuong"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Ma_HashPoint_Accelerated_Point_Searching_and_Sampling_for_Neural_Rendering_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Ma_HashPoint_Accelerated_Point_Searching_and_Sampling_for_Neural_Rendering_CVPR_2024_paper.html"
+  },
+  {
+    "title": "MFP: Making Full Use of Probability Maps for Interactive Image Segmentation",
+    "authors": [
+      "Lee, Chaewon",
+      "Lee, Seon-Ho",
+      "Kim, Chang-Su"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Lee_MFP_Making_Full_Use_of_Probability_Maps_for_Interactive_Image_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Lee_MFP_Making_Full_Use_of_Probability_Maps_for_Interactive_Image_CVPR_2024_paper.html"
+  },
+  {
+    "title": "CAT: Exploiting Inter-Class Dynamics for Domain Adaptive Object Detection",
+    "authors": [
+      "Kennerley, Mikhail",
+      "Wang, Jian-Gang",
+      "Veeravalli, Bharadwaj",
+      "Tan, Robby T."
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Kennerley_CAT_Exploiting_Inter-Class_Dynamics_for_Domain_Adaptive_Object_Detection_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Kennerley_CAT_Exploiting_Inter-Class_Dynamics_for_Domain_Adaptive_Object_Detection_CVPR_2024_paper.html"
+  },
+  {
+    "title": "StyLitGAN: Image-Based Relighting via Latent Control",
+    "authors": [
+      "Bhattad, Anand",
+      "Soole, James",
+      "Forsyth, D.A."
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Bhattad_StyLitGAN_Image-Based_Relighting_via_Latent_Control_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Bhattad_StyLitGAN_Image-Based_Relighting_via_Latent_Control_CVPR_2024_paper.html"
+  },
+  {
+    "title": "An Empirical Study of Scaling Law for Scene Text Recognition",
+    "authors": [
+      "Rang, Miao",
+      "Bi, Zhenni",
+      "Liu, Chuanjian",
+      "Wang, Yunhe",
+      "Han, Kai"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Rang_An_Empirical_Study_of_Scaling_Law_for_Scene_Text_Recognition_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Rang_An_Empirical_Study_of_Scaling_Law_for_Scene_Text_Recognition_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Text2Loc: 3D Point Cloud Localization from Natural Language",
+    "authors": [
+      "Xia, Yan",
+      "Shi, Letian",
+      "Ding, Zifeng",
+      "Henriques, Joao F.",
+      "Cremers, Daniel"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Xia_Text2Loc_3D_Point_Cloud_Localization_from_Natural_Language_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Xia_Text2Loc_3D_Point_Cloud_Localization_from_Natural_Language_CVPR_2024_paper.html"
+  },
+  {
+    "title": "SVDinsTN: A Tensor Network Paradigm for Efficient Structure Search from Regularized Modeling Perspective",
+    "authors": [
+      "Zheng, Yu-Bang",
+      "Zhao, Xi-Le",
+      "Zeng, Junhua",
+      "Li, Chao",
+      "Zhao, Qibin",
+      "Li, Heng-Chao",
+      "Huang, Ting-Zhu"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zheng_SVDinsTN_A_Tensor_Network_Paradigm_for_Efficient_Structure_Search_from_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zheng_SVDinsTN_A_Tensor_Network_Paradigm_for_Efficient_Structure_Search_from_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Decomposing Disease Descriptions for Enhanced Pathology Detection: A Multi-Aspect Vision-Language Pre-training Framework",
+    "authors": [
+      "Phan, Vu Minh Hieu",
+      "Xie, Yutong",
+      "Qi, Yuankai",
+      "Liu, Lingqiao",
+      "Liu, Liyang",
+      "Zhang, Bowen",
+      "Liao, Zhibin",
+      "Wu, Qi",
+      "To, Minh-Son",
+      "Verjans, Johan W."
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Phan_Decomposing_Disease_Descriptions_for_Enhanced_Pathology_Detection_A_Multi-Aspect_Vision-Language_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Phan_Decomposing_Disease_Descriptions_for_Enhanced_Pathology_Detection_A_Multi-Aspect_Vision-Language_CVPR_2024_paper.html"
+  },
+  {
+    "title": "MoMask: Generative Masked Modeling of 3D Human Motions",
+    "authors": [
+      "Guo, Chuan",
+      "Mu, Yuxuan",
+      "Javed, Muhammad Gohar",
+      "Wang, Sen",
+      "Cheng, Li"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Guo_MoMask_Generative_Masked_Modeling_of_3D_Human_Motions_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Guo_MoMask_Generative_Masked_Modeling_of_3D_Human_Motions_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Inverse Rendering of Glossy Objects via the Neural Plenoptic Function and Radiance Fields",
+    "authors": [
+      "Wang, Haoyuan",
+      "Hu, Wenbo",
+      "Zhu, Lei",
+      "Lau, Rynson W.H."
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Wang_Inverse_Rendering_of_Glossy_Objects_via_the_Neural_Plenoptic_Function_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Wang_Inverse_Rendering_of_Glossy_Objects_via_the_Neural_Plenoptic_Function_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Split to Merge: Unifying Separated Modalities for Unsupervised Domain Adaptation",
+    "authors": [
+      "Li, Xinyao",
+      "Li, Yuke",
+      "Du, Zhekai",
+      "Li, Fengling",
+      "Lu, Ke",
+      "Li, Jingjing"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Li_Split_to_Merge_Unifying_Separated_Modalities_for_Unsupervised_Domain_Adaptation_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Li_Split_to_Merge_Unifying_Separated_Modalities_for_Unsupervised_Domain_Adaptation_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Fitting Flats to Flats",
+    "authors": [
+      "Dogadov, Gabriel",
+      "Finnendahl, Ugo",
+      "Alexa, Marc"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Dogadov_Fitting_Flats_to_Flats_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Dogadov_Fitting_Flats_to_Flats_CVPR_2024_paper.html"
+  },
+  {
+    "title": "Fusing Personal and Environmental Cues for Identification and Segmentation of First-Person Camera Wearers in Third-Person Views",
+    "authors": [
+      "Zhao, Ziwei",
+      "Wang, Yuchen",
+      "Wang, Chuhua"
+    ],
+    "year": "2024",
+    "conference": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "pdf": "https://openaccess.thecvf.com/content/CVPR2024/papers/Zhao_Fusing_Personal_and_Environmental_Cues_for_Identification_and_Segmentation_of_CVPR_2024_paper.pdf",
+    "url": "https://openaccess.thecvf.com/content/CVPR2024/html/Zhao_Fusing_Personal_and_Environmental_Cues_for_Identification_and_Segmentation_of_CVPR_2024_paper.html"
+  }
+]

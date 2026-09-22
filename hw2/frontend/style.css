@@ -1,0 +1,154 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 40px;
+    background: #f5f5f5;
+}
+
+
+h1 {
+    color: #333;
+}
+
+
+.search-box {
+    margin-bottom: 20px;
+}
+
+
+input {
+    width: 300px;
+    padding: 8px;
+    font-size: 16px;
+}
+
+
+button {
+    padding: 8px 15px;
+    cursor: pointer;
+}
+
+
+.paper {
+    background: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+
+.paper h3 {
+    margin-top: 0;
+}
+
+
+.paper-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.detail-button {
+    padding: 6px 10px;
+}
+
+
+.paper-detail {
+    background: white;
+    padding: 20px;
+    margin-top: 24px;
+    border-radius: 8px;
+}
+
+
+.paper-detail h2 {
+    margin-top: 0;
+}
+
+
+.paper-detail dl {
+    margin: 0;
+}
+
+
+.paper-detail dt {
+    margin-top: 12px;
+    font-weight: bold;
+}
+
+
+.paper-detail dd {
+    margin: 4px 0 0;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+
+.detail-error {
+    color: #b00020;
+}
+
+
+a {
+    color: blue;
+}
+
+.topic {
+
+    display: inline-block;
+
+    background: white;
+
+    padding: 10px 15px;
+
+    margin: 5px;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    cursor:pointer;
+}
+
+
+.topic:hover {
+
+    background: #e8e8e8;
+
+}
+
+
+#topics {
+
+    margin-bottom: 30px;
+
+}
+
+
+#keyword-network {
+
+    width: 100%;
+
+    height: 600px;
+
+    background: white;
+
+    border-radius: 8px;
+
+    margin-bottom: 30px;
+
+}
+
+#trend-chart {
+
+    width:100%;
+
+    height:500px;
+
+    background:white;
+
+    border-radius:8px;
+
+    margin-bottom:30px;
+
+}

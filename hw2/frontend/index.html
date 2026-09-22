@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CVPR 2024 Paper Search</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>CVPR 2024 Paper Search</h1>
+    <section>
+        <h2>熱門研究方向 Top 10</h2>
+
+        <div id="topics"></div>
+
+        <div class="search-box">
+            <input id="keyword" placeholder="輸入關鍵字">
+            <button onclick="searchPaper()">
+                搜尋
+            </button>
+        </div>
+    </section>
+
+
+    <section>
+        <h2>論文管理</h2>
+        <h3>新增 / 修改 / 刪除論文資料</h3>
+        <input id="crud-title" placeholder="論文標題">
+        <input id="crud-author" placeholder="作者">
+        <input id="crud-year" placeholder="年份">
+        <input id="crud-conference" placeholder="會議">
+
+        <button onclick="addPaper()">
+            新增論文
+        </button>
+
+        <button onclick="updatePaper()">
+            修改論文
+        </button>
+
+        <button onclick="deletePaper()">
+            刪除論文
+        </button>
+
+    </section>
+
+
+    <section>
+        <h2>關鍵詞圖譜</h2>
+        <div id="keyword-network"></div>
+    </section>
+
+    <section>
+        <h2>熱門詞熱度走勢</h2>
+        <div id="trend-chart"></div>
+    </section>
+
+    <p id="info"></p>
+
+    <div id="result"></div>
+
+    <section id="paper-detail" class="paper-detail" hidden>
+        <h2>論文詳細資料</h2>
+        <div id="detail-content"></div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/echarts/dist/echarts.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>
