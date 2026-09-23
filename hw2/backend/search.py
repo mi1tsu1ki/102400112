@@ -1,31 +1,20 @@
-import json
-import sys
-from pathlib import Path
-
-
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
-
-from backend.detail import load_paper_details
-
-
-DATA_FILE = PROJECT_ROOT / "data_cvpr2024.json"
+from backend.storage import load_papers
 
 
 def load_paper_details_by_title():
     return {
         paper["title"]: paper
-        for paper in load_paper_details()
+        for paper in load_papers()
     }
 
 
-def searchable_text(paper, detail):
+def searchable_text(paper, detail=None):
+    detail = detail or {}
     fields = [
         paper.get("title", ""),
         detail.get("year", ""),
         detail.get("conference", ""),
+        detail.get("abstract", ""),
     ]
 
     authors = detail.get("authors", [])
@@ -33,6 +22,12 @@ def searchable_text(paper, detail):
         fields.extend(authors)
     else:
         fields.append(authors)
+
+    keywords = detail.get("keywords", [])
+    if isinstance(keywords, list):
+        fields.extend(keywords)
+    else:
+        fields.append(keywords)
 
     return " ".join(str(field) for field in fields if field).lower()
 
@@ -47,23 +42,15 @@ def merge_paper_detail(paper, detail):
     }
 
 
-def load_papers():
-    with DATA_FILE.open("r", encoding="utf-8") as f:
-        return json.load(f)
-
-
 def search(keyword):
     papers = load_papers()
-    details = load_paper_details_by_title()
-    keyword = keyword.lower()
+    keyword = (keyword or "").strip().lower()
 
     result = []
 
     for paper in papers:
-        detail = details.get(paper["title"])
-
-        if keyword in searchable_text(paper, detail or {}):
-            result.append(merge_paper_detail(paper, detail))
+        if keyword in searchable_text(paper):
+            result.append(paper)
 
     return result
 

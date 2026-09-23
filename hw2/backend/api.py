@@ -20,8 +20,9 @@ from backend.trend import get_trend_data
 from backend.crud import (
     add_paper,
     update_paper,
-    delete_paper
+    delete_paper,
 )
+from backend.storage import DuplicatePaperError, PaperValidationError
 
 app = Flask(__name__)
 CORS(app)
@@ -57,36 +58,45 @@ def paper_detail(title):
 
 @app.route("/paper", methods=["POST"])
 def create_paper():
+    data = request.get_json(silent=True)
 
-    data = request.json
+    try:
+        result = add_paper(data)
+    except DuplicatePaperError as error:
+        return jsonify({"error": str(error)}), 409
+    except PaperValidationError as error:
+        return jsonify({"error": str(error)}), 400
 
-    result = add_paper(data)
-
-    return jsonify(result)
+    return jsonify(result), 201
 
 
 @app.route("/paper/<path:title>", methods=["PUT"])
 def edit_paper(title):
+    data = request.get_json(silent=True)
 
-    data = request.json
-
-    result = update_paper(
-        title,
-        data
-    )
+    try:
+        result = update_paper(title, data)
+    except DuplicatePaperError as error:
+        return jsonify({"error": str(error)}), 409
+    except PaperValidationError as error:
+        return jsonify({"error": str(error)}), 400
 
     if result is None:
         return jsonify({
             "error": "paper not found"
-        }),404
+        }), 404
 
     return jsonify(result)
 
 
 @app.route("/paper/<path:title>", methods=["DELETE"])
 def remove_paper(title):
-
     result = delete_paper(title)
+
+    if not result:
+        return jsonify({
+            "error": "paper not found"
+        }), 404
 
     return jsonify({
         "success": result
@@ -107,10 +117,17 @@ def keyword_network():
 
 @app.route("/trend")
 def trend():
+    top = request.args.get("top", default="10")
+    try:
+        top = int(top)
+        result = get_trend_data(
+            top=top,
+            conference=request.args.get("conference"),
+        )
+    except (TypeError, ValueError) as error:
+        return jsonify({"error": str(error)}), 400
 
-    return {
-        "data": get_trend_data()
-    }
+    return jsonify(result)
 
 
 if __name__ == "__main__":

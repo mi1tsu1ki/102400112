@@ -1,260 +1,46 @@
-# AI 協作與測試證據紀錄
+# 收尾與驗證證據
 
-## 一、AI 協作方式
+本文件只記錄目前工作樹中可以由檔案、命令輸出或 Git 狀態確認的內容；未實際執行的瀏覽器操作、部署與外部服務不寫成已完成。
 
-本專案開發過程中使用 AI 輔助進行需求分析、程式設計討論、錯誤排查與文件整理。
+## 一、目前資料範圍
 
-AI 主要協助內容包含：
+- `data/papers.json`：2715 篇 canonical 論文資料。
+- `cvpr2024_detail.json`：50 篇既有詳細資料。
+- `data/trend_data.json`：17,922 筆趨勢長表，包含 CVPR 與 ICCV 的資料；不包含可宣稱完整的 ECCV 多年資料。
+- 本次沒有重新爬取其餘 2665 篇詳細資料。
 
-* 分析作業需求與功能拆解
-* 協助設計系統架構
-* 討論 Flask API 設計方式
-* 協助前後端資料格式規劃
-* 協助分析錯誤訊息與除錯方向
-* 協助整理 README、NABCD、PSP 文件
+## 二、本次程式收尾
 
-所有程式碼修改皆由開發者確認後整合，並透過實際執行測試驗證。
+1. 統一 search、detail、analysis 與 CRUD 使用 `data/papers.json`。
+2. `/trend` 依 conference、year、keyword 聚合，並限制 `top` 為 1–30，前端只繪製有限數量的 series。
+3. CRUD 加入必要欄位、型別、年份、重複標題與不存在資料的錯誤處理。
+4. 保留現有 Flask 頁面與 ECharts 前端，不進行大規模重構。
 
----
+## 三、自動化驗證
 
-# 二、AI 協作流程
-
-開發流程如下：
-
-1. 分析作業需求
-
-   * 確認系統需要包含：
-
-     * 論文搜尋
-     * 詳細資料展示
-     * 熱門方向分析
-     * 關鍵詞關聯圖
-     * 熱度趨勢分析
-     * CRUD 功能
-     * 文件與版本管理
-
-2. 系統設計討論
-
-   使用 Flask 作為後端 API Framework：
-
-   ```
-   backend/
-   ├── api.py
-   ├── search.py
-   ├── detail.py
-   ├── analysis.py
-   ├── trend.py
-   └── crud.py
-   ```
-
-   前端使用：
-
-   ```
-   frontend/
-   ├── index.html
-   ├── style.css
-   └── script.js
-   ```
-
-3. 功能開發與驗證
-
-   每完成一項功能後：
-
-   * 啟動 Flask Server
-   * 使用瀏覽器測試
-   * 使用 Thunder Client 測試 API
-   * 確認回傳資料格式
-
----
-
-# 三、AI 協助完成項目
-
-## 1. 論文搜尋系統
-
-完成：
-
-* CVPR 2024 論文資料整理
-* 關鍵字搜尋 API
-* 前端搜尋介面
-
-驗證：
-
-```
-GET /search?q=keyword
-```
-
-可正常取得搜尋結果。
-
----
-
-## 2. 論文詳細資料展示
-
-完成：
-
-* Title
-* Authors
-* Year
-* Conference
-* PDF
-* URL
-
-驗證：
-
-```
-GET /paper/<title>
-```
-
-可正常回傳 JSON 資料。
-
----
-
-## 3. 資料分析功能
-
-完成：
-
-* Top 10 熱門研究方向
-* 關鍵詞關聯圖
-* 熱度趨勢分析
-
-驗證：
-
-```
-GET /topics
-
-GET /keyword-network
-
-GET /trend
-```
-
-皆可正常回傳資料。
-
----
-
-## 4. CRUD 功能
-
-完成：
-
-新增：
-
-```
-POST /paper
-```
-
-修改：
-
-```
-PUT /paper/<title>
-```
-
-刪除：
-
-```
-DELETE /paper/<title>
-```
-
-測試工具：
-
-* Thunder Client
-
-測試結果：
-
-* 新增成功
-* 修改成功
-* 刪除成功
-
----
-
-# 四、人工驗證紀錄
-
-AI 提供建議後，由開發者進行：
-
-* 程式執行測試
-* API 測試
-* 前端操作測試
-* Git 版本確認
-
-測試環境：
-
-```
-Python 3.14.5
-
-Flask
-
-Flask-CORS
-
-ECharts
-```
-
-啟動方式：
+執行指令：
 
 ```powershell
-.\.venv\Scripts\python.exe backend\api.py
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m compileall -q backend tests
+node --check frontend/script.js
 ```
 
-服務位置：
+本輪目前已確認：
 
-```
-http://127.0.0.1:5000
-```
+- `tests/test_api.py`：5 個 unittest 通過。
+- Python `compileall`：通過。
+- `node --check frontend/script.js`：通過。
+- Flask HTTP smoke test：首頁、搜尋、詳情、Top 10、關鍵詞圖譜、Trend 成功；CRUD 的 POST 201、PUT 200、DELETE 200 成功。
+- CRUD 測試資料寫入系統暫存目錄，未污染正式資料檔。
 
----
+測試涵蓋搜尋上限、Trend Top N 與錯誤參數、首頁、Top 10、關鍵詞圖譜，以及 CRUD 新增、修改、刪除、重複資料、格式錯誤與不存在資料。
 
-# 五、Git 版本紀錄
+## 四、尚未宣稱完成的項目
 
-主要版本：
+- 2715 篇完整詳細資料。
+- ECCV 或完整多年、跨會議趨勢資料。
+- 華為雲或其他正式環境部署。
+- 新的正式 Release 或 CI/CD 流程。
 
-```
-v1.0.0
-```
-
-目前包含：
-
-* 系統初版
-* 搜尋功能
-* 詳細資料展示
-* 分析圖表
-* CRUD
-* 文件整理
-* PSP
-* NABCD
-* 原型設計
-
-主要 commit：
-
-```
-bd8ab07 補充PSP實際工時與偏差分析
-
-f434827 新增論文CRUD功能
-
-390cd5b 更新README完整專案說明
-
-fef44c2 新增Figma原型設計文件
-
-afc2515 新增PSP與NABCD需求分析文件
-```
-
----
-
-# 六、目前限制
-
-目前尚未完成：
-
-* 華為雲部署
-* 多頂會資料整合
-* 大規模年份趨勢分析
-
-後續可依作業需求持續擴充。
-
----
-
-# 七、總結
-
-本專案透過 AI 輔助完成需求分析、系統設計、程式開發與文件整理。
-
-AI 作為開發輔助工具提供：
-
-* 設計建議
-* 問題分析
-* 文件整理
-
-最終功能與程式品質仍由開發者自行測試與確認。
+既有 `main` 分支與 `v1.0.0` tag 可由 Git 歷史查到，但不把它們當成本輪收尾修改的 Release 證據。

@@ -1,19 +1,27 @@
+const API_BASE = "http://127.0.0.1:5000";
+
+
+async function requestJson(path, options = {}) {
+    const response = await fetch(API_BASE + path, options);
+    const data = await response.json().catch(() => ({}));
+
+    if (!response.ok) {
+        throw new Error(data.error || "請求失敗");
+    }
+
+    return data;
+}
+
+
 function searchPaper() {
+    const keyword = document.getElementById("keyword").value;
 
-    let keyword = document.getElementById("keyword").value;
-
-    fetch("http://127.0.0.1:5000/search?q=" + keyword)
-        .then(response => response.json())
+    requestJson("/search?q=" + encodeURIComponent(keyword))
         .then(data => {
-
-            document.getElementById("info").innerHTML =
+            document.getElementById("info").textContent =
                 "找到 " + data.count + " 篇論文";
 
-            let html = "";
-
-            data.results.forEach(paper => {
-
-                html += `
+            const html = data.results.map(paper => `
                 <div class="paper">
                     <h3>${paper.title}</h3>
                     <div class="paper-actions">
@@ -25,9 +33,7 @@ function searchPaper() {
                         </button>
                     </div>
                 </div>
-                `;
-
-            });
+            `).join("");
 
             document.getElementById("result").innerHTML = html;
             document.getElementById("paper-detail").hidden = true;
@@ -37,34 +43,23 @@ function searchPaper() {
                     showPaperDetail(data.results[index].title);
                 });
             });
-
+        })
+        .catch(error => {
+            document.getElementById("info").textContent = error.message;
+            document.getElementById("result").innerHTML = "";
         });
-
 }
 
 
 function showPaperDetail(title) {
-
     const detailSection = document.getElementById("paper-detail");
     const detailContent = document.getElementById("detail-content");
 
     detailSection.hidden = false;
     detailContent.innerHTML = "<p>正在載入詳細資料...</p>";
 
-    fetch("http://127.0.0.1:5000/paper/" + encodeURIComponent(title))
-        .then(response => {
-            if (!response.ok) {
-                if (response.status === 404) {
-                    throw new Error("目前沒有這篇論文的詳細資料。");
-                }
-
-                throw new Error("讀取詳細資料失敗。");
-            }
-
-            return response.json();
-        })
+    requestJson("/paper/" + encodeURIComponent(title))
         .then(paper => {
-
             const authors = paper.authors.length > 0
                 ? paper.authors.join(", ")
                 : "無作者資料";
@@ -79,331 +74,173 @@ function showPaperDetail(title) {
                     <dt>Conference</dt>
                     <dd>${paper.conference}</dd>
                     <dt>PDF</dt>
-                    <dd><a href="${paper.pdf}" target="_blank" rel="noopener noreferrer">${paper.pdf}</a></dd>
+                    <dd><a href="${paper.pdf}" target="_blank" rel="noopener noreferrer">${paper.pdf || "無"}</a></dd>
                     <dt>URL</dt>
                     <dd><a href="${paper.url}" target="_blank" rel="noopener noreferrer">${paper.url}</a></dd>
                 </dl>
             `;
 
             detailSection.scrollIntoView({ behavior: "smooth", block: "start" });
-
         })
         .catch(error => {
             detailContent.innerHTML = `<p class="detail-error">${error.message}</p>`;
         });
-
 }
+
 
 function loadTopics() {
-
-    fetch("http://127.0.0.1:5000/topics")
-        .then(response => response.json())
+    requestJson("/topics")
         .then(data => {
-
-            let html = "";
-
-            data.topics.forEach(topic => {
-
-                html += `
+            const html = data.topics.map(topic => `
                 <div class="topic" onclick="searchTopic('${topic.keyword}')">
-                    ${topic.keyword}
-                    (${topic.count})
+                    ${topic.keyword} (${topic.count})
                 </div>
-                `;
-
-            });
+            `).join("");
 
             document.getElementById("topics").innerHTML = html;
-
+        })
+        .catch(error => {
+            document.getElementById("topics").textContent = error.message;
         });
-
 }
-
-loadTopics();
 
 
 function searchTopic(keyword) {
-
     document.getElementById("keyword").value = keyword;
-
     searchPaper();
-
 }
 
 
 function loadKeywordNetwork() {
-
-    fetch("http://127.0.0.1:5000/keyword-network")
-        .then(response => response.json())
+    requestJson("/keyword-network")
         .then(data => {
-
-            let networkChart = echarts.init(
+            const networkChart = echarts.init(
                 document.getElementById("keyword-network")
             );
 
-
-            let option = {
-
-                tooltip: {
-                    formatter: function (params) {
-                        if (params.dataType === "node") {
-                            return (
-                                "Keyword: " +
-                                params.data.name +
-                                "<br>Count: " +
-                                params.data.value
-                            );
-                        }
-                        return "";
-                    }
-                },
-
-                series: [
-                    {
-                        type: "graph",
-                        layout: "force",
-                        roam: true,
-
-                        data: data.nodes.map(node => {
-                            return {
-                                name: node.id,
-                                value: node.count,
-                                symbolSize: Math.min(node.count / 5 + 10, 50)
-                            };
-                        }),
-
-                        links: data.links,
-                        lineStyle: {
-                            opacity: 0.3
-                        },
-
-                        label: {
-                            show: true,
-                            formatter: function (params) {
-                                return params.data.value >= 30
-                                    ? params.data.name
-                                    : "";
-                            }
-                        },
-
-                        emphasis: {
-                            focus: "adjacency"
-                        },
-
-                        force: {
-                            repulsion: 200,
-                            edgeLength: 120
-                        },
-                    }
-                ]
-
-            };
-
-            networkChart.on("click", function (params) {
-                if (
-                    params.dataType === "node" &&
-                    params.data.name
-                ) {
+            networkChart.on("click", params => {
+                if (params.dataType === "node" && params.data.name) {
                     searchTopic(params.data.name);
                 }
             });
 
-            networkChart.setOption(option);
-
+            networkChart.setOption({
+                tooltip: {
+                    formatter: params => params.dataType === "node"
+                        ? "Keyword: " + params.data.name +
+                          "<br>Count: " + params.data.value
+                        : ""
+                },
+                series: [{
+                    type: "graph",
+                    layout: "force",
+                    roam: true,
+                    data: data.nodes.map(node => ({
+                        name: node.id,
+                        value: node.count,
+                        symbolSize: Math.min(node.count / 5 + 10, 50)
+                    })),
+                    links: data.links,
+                    lineStyle: { opacity: 0.3 },
+                    label: {
+                        show: true,
+                        formatter: params => params.data.value >= 30
+                            ? params.data.name
+                            : ""
+                    },
+                    emphasis: { focus: "adjacency" },
+                    force: { repulsion: 200, edgeLength: 120 }
+                }]
+            });
+        })
+        .catch(error => {
+            document.getElementById("keyword-network").textContent = error.message;
         });
-
 }
-
-loadKeywordNetwork();
 
 
 function loadTrendChart() {
-
-    fetch("http://127.0.0.1:5000/trend")
-        .then(response => response.json())
+    requestJson("/trend?top=10")
         .then(data => {
-
-
-            let trendChart = echarts.init(
+            const trendChart = echarts.init(
                 document.getElementById("trend-chart")
             );
 
-
-            let trends = data.data;
-
-
-            let keywords = [
-                ...new Set(
-                    trends.map(item => item.keyword)
-                )
-            ];
-
-
-            let series = keywords.map(keyword => {
-
-                return {
-
-                    name: keyword,
-
-                    type: "line",
-
-                    data:
-                        trends
-                            .filter(item => item.keyword === keyword)
-                            .map(item => item.count)
-                };
-            });
-
-
-
             trendChart.setOption({
-
-                tooltip: {
-                    trigger: "axis"
-                },
-
-
+                tooltip: { trigger: "axis" },
                 legend: {
-                    data: keywords
+                    type: "scroll",
+                    data: data.series.map(item => item.name)
                 },
-
-
                 xAxis: {
                     type: "category",
-                    data: [2022, 2023, 2024]
+                    data: data.years
                 },
-
-
-                yAxis: {
-                    type: "value"
-                },
-
-
-                series: series
-
+                yAxis: { type: "value" },
+                series: data.series
             });
-
-
+        })
+        .catch(error => {
+            document.getElementById("trend-chart").textContent = error.message;
         });
-
 }
 
 
 function addPaper() {
-
-    let data = {
-
-        title:
-            document.getElementById("crud-title").value,
-
-        authors: [
-            document.getElementById("crud-author").value
-        ],
-
-        year:
-            Number(document.getElementById("crud-year").value),
-
-        conference:
-            document.getElementById("crud-conference").value,
-
+    const data = {
+        title: document.getElementById("crud-title").value,
+        authors: [document.getElementById("crud-author").value],
+        year: Number(document.getElementById("crud-year").value),
+        conference: document.getElementById("crud-conference").value,
         pdf: "",
         url: ""
-
     };
 
-
-    fetch(
-        "http://127.0.0.1:5000/paper",
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body:
-                JSON.stringify(data)
-        }
-    )
-        .then(response => response.json())
-        .then(data => {
-
+    requestJson("/paper", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+        .then(() => {
             alert("新增成功");
             document.getElementById("crud-title").value = "";
-        });
-
+        })
+        .catch(error => alert(error.message));
 }
 
 
 function updatePaper() {
-
-    let title =
-        document.getElementById("crud-title").value;
-
-
-    let data = {
-
-        authors: [
-            document.getElementById("crud-author").value
-        ],
-
-        year: Number(
-            document.getElementById("crud-year").value
-        ),
-
-        conference:
-            document.getElementById("crud-conference").value
-
+    const title = document.getElementById("crud-title").value;
+    const data = {
+        authors: [document.getElementById("crud-author").value],
+        year: Number(document.getElementById("crud-year").value),
+        conference: document.getElementById("crud-conference").value
     };
 
-
-    fetch(
-        "http://127.0.0.1:5000/paper/"
-        + encodeURIComponent(title),
-        {
-
-            method: "PUT",
-
-            headers: {
-                "Content-Type": "application/json"
-            },
-
-            body:
-                JSON.stringify(data)
-
-        }
-    )
-        .then(response => response.json())
-        .then(() => {
-
-            alert("修改成功");
-
-        });
-
+    requestJson("/paper/" + encodeURIComponent(title), {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    })
+        .then(() => alert("修改成功"))
+        .catch(error => alert(error.message));
 }
 
 
 function deletePaper() {
+    const title = document.getElementById("crud-title").value;
 
-    let title =
-        document.getElementById("crud-title").value;
-
-
-    fetch(
-        "http://127.0.0.1:5000/paper/"
-        + encodeURIComponent(title),
-        {
-            method: "DELETE"
-        }
-    )
-
-        .then(response => response.json())
-
+    requestJson("/paper/" + encodeURIComponent(title), {
+        method: "DELETE"
+    })
         .then(() => {
-
             alert("刪除成功");
             searchPaper();
-        });
-
+        })
+        .catch(error => alert(error.message));
 }
 
 
+loadTopics();
+loadKeywordNetwork();
 setTimeout(loadTrendChart, 500);

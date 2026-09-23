@@ -1,4 +1,4 @@
-﻿# CVPR 2024 Paper Search
+# CVPR 2024 Paper Search
 
 ## 作業資訊
 
@@ -6,344 +6,136 @@
 |---|---|
 | 課程 | 軟體工程實踐 |
 | 作業 | 第二次作業：與 AI 結對編程（頂會熱詞統計） |
-| 作業公告 | https://bbs.csdn.net/topics/620526318 |
 | 學號 | 102400112 |
 
----
+## 專案介紹
 
-# 專案介紹
+本專案提供計算機視覺論文的搜尋、詳細資料展示與研究熱點分析。系統目前以 CVPR 2024 論文為主要資料集，並提供 CVPR/ICCV 初步趨勢資料的視覺化。
 
-本專案為軟體工程課程第二次作業，目標是建立一個計算機視覺領域論文搜尋與研究熱點分析系統。
+目前可使用的功能：
 
-系統以 CVPR 2024 論文資料作為主要資料來源，提供論文搜尋、詳細資料展示、熱門研究方向分析、關鍵詞關聯圖以及熱門詞熱度趨勢分析功能。
+- 論文關鍵字搜尋與原文連結。
+- 論文詳細資料查詢。
+- Top 10 熱門研究方向。
+- 關鍵詞共現圖譜。
+- 按年份與會議聚合的熱度趨勢圖。
+- 論文新增、修改、刪除 API。
 
-透過 Web 介面協助使用者快速搜尋論文，並分析近年計算機視覺領域研究方向變化。
+## 資料來源與範圍
 
----
+`data/papers.json` 是系統目前唯一的論文資料來源，啟動後由 search、detail、analysis 與 CRUD 共用。此檔案由既有資料合併產生，不需要重新爬取詳細頁面：
 
-# 使用技術
+- 2715 篇 CVPR 2024 論文列表。
+- 其中 50 篇來自既有詳細資料；其餘資料保留列表欄位，詳細欄位可能是空白或預設值。
+- 尚未重新爬取其餘論文的詳細頁面。
 
-- Python 3.14.5
-- Flask
-- Flask-CORS
-- HTML
-- CSS
-- JavaScript
-- ECharts
-- JSON
+`data_cvpr2024.json` 與 `cvpr2024_detail.json` 保留為原始資料備份；`data/trend_data.json` 是趨勢分析的長表來源，目前包含 CVPR 與 ICCV 的 2022–2024 資料。
 
----
+## 安裝與啟動
 
-# 資料來源
-
-目前資料來源：
-
-- CVPR 2024 論文公開資料
-
-主要資料檔案：
-
-```
-data_cvpr2024.json
-```
-
-包含：
-
-```
-2715 篇 CVPR 2024 論文列表資料
-```
-
-詳細資料：
-
-```
-cvpr2024_detail.json
-```
-
-目前包含：
-
-```
-50 篇論文詳細資料
-```
-
----
-
-# 系統功能
-
-## 1. 論文搜尋
-
-提供：
-
-- 輸入關鍵字搜尋 CVPR 2024 論文標題
-- 顯示搜尋結果
-- 開啟論文原文連結
-- 查看論文詳細資料
-
-
-## 2. 論文詳細資料展示
-
-提供以下資訊：
-
-- Title
-- Authors
-- Year
-- Conference
-- PDF
-- URL
-
-
-## 3. 熱門研究方向分析
-
-根據論文標題進行關鍵詞統計。
-
-功能：
-
-- 分析熱門研究方向
-- 展示 Top 10 熱門關鍵詞
-- 點擊熱門方向直接搜尋相關論文
-
-
-## 4. 關鍵詞關聯圖譜
-
-利用論文標題中的關鍵詞建立關聯網路。
-
-展示：
-
-- 節點代表研究關鍵詞
-- 邊代表關鍵詞共同出現關係
-- 支援點擊節點搜尋相關論文
-
-
-## 5. 熱門詞熱度趨勢分析
-
-目前展示：
-
-- diffusion
-- transformer
-
-分析：
-
-- 2022
-- 2023
-- 2024
-
-三個年份的熱門詞熱度變化。
-
-使用 ECharts Line Chart 呈現趨勢。
-
----
-
-# 專案結構
-
-```
-hw2/
-
-├── backend/
-│   ├── api.py
-│   ├── search.py
-│   ├── detail.py
-│   ├── analysis.py
-│   ├── trend.py
-│   ├── crawl_cvpr.py
-│   └── crawl_cvpr_detail.py
-│
-├── frontend/
-│   ├── index.html
-│   ├── script.js
-│   └── style.css
-│
-├── data/
-│   └── trend_data.json
-│
-├── docs/
-│   ├── PSP.md
-│   ├── NABCD.md
-│   └── prototype.md
-│
-├── data_cvpr2024.json
-├── cvpr2024_detail.json
-├── requirements.txt
-├── README.md
-└── codestyle.md
-```
-
----
-
-# 安裝方式
-
-在專案根目錄開啟 PowerShell。
-
-建立虛擬環境：
+在專案根目錄執行：
 
 ```powershell
 python -m venv .venv
-```
-
-啟用虛擬環境：
-
-```powershell
 .\.venv\Scripts\Activate.ps1
-```
-
-安裝套件：
-
-```powershell
 pip install -r requirements.txt
 ```
-
----
-
-# 啟動方式
-
-在專案根目錄執行：
+啟動 Flask：
 
 ```powershell
 .\.venv\Scripts\python.exe backend\api.py
 ```
 
-後端啟動後：
+服務位址：`http://127.0.0.1:5000`
 
-```
-http://127.0.0.1:5000
-```
+接著用瀏覽器開啟 `frontend/index.html`。前端圖表使用 ECharts CDN，若離線則圖表無法載入。
 
-接著使用瀏覽器開啟：
+## API
 
-```
-frontend/index.html
-```
+| 方法與路徑 | 說明 |
+|---|---|
+| `GET /` | 檢查服務是否啟動 |
+| `GET /search?q=diffusion` | 搜尋論文，最多回傳 20 筆結果 |
+| `GET /paper/<title>` | 查詢單篇論文 |
+| `POST /paper` | 新增論文，成功回傳 201 |
+| `PUT /paper/<title>` | 修改論文 |
+| `DELETE /paper/<title>` | 刪除論文，不存在回傳 404 |
+| `GET /topics` | 取得 Top 10 熱門詞 |
+| `GET /keyword-network` | 取得最多 100 個節點的關聯圖資料 |
+| `GET /trend?top=10` | 取得聚合後趨勢資料 |
+| `GET /trend?top=10&conference=CVPR` | 篩選單一會議的趨勢資料 |
 
-即可使用系統。
+`/trend` 回傳 `years`、`conferences`、`keywords`、`series` 與聚合後的 `data`。`top` 允許 1–30，避免將原始長表的上萬個 keyword 全部建立成前端 series。
 
----
+新增與修改論文時，`title`、`year`、`conference` 會進行必要性與型別驗證；重複標題回傳 409，格式錯誤回傳 400，找不到資料回傳 404。
 
-# API 範例
+## 測試
 
-## 搜尋論文
+使用標準函式庫 unittest，不需要額外安裝 pytest：
 
-```
-GET http://127.0.0.1:5000/search?q=diffusion
-```
-
----
-
-## 熱門研究方向
-
-```
-GET http://127.0.0.1:5000/topics
-```
-
----
-
-## 關鍵詞關聯圖
-
-```
-GET http://127.0.0.1:5000/keyword-network
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
 ```
 
----
+目前測試涵蓋：
 
-## 熱度趨勢
+- 搜尋結果上限。
+- 趨勢資料年份、Top N 與 series 數量限制。
+- 非法趨勢參數的 400 錯誤。
+- CRUD 新增、修改、刪除、重複資料、格式驗證與不存在資料的錯誤處理。
 
-```
-GET http://127.0.0.1:5000/trend
-```
+## 專案結構
 
----
-
-# Prototype 設計
-
-使用工具：
-
-```
-Figma
-```
-
-Prototype：
-
-```
-https://www.figma.com/make/teCO9vF14tqYqQH7IZGKiF/CVPR-2024-%E8%AB%96%E6%96%87%E5%88%86%E6%9E%90%E7%B3%BB%E7%B5%B1%E5%8E%9F%E5%9E%8B
-```
-
-詳細說明：
-
-```
-docs/prototype.md
-```
-
----
-
-# AI 使用說明
-
-本專案開發過程使用 AI 作為結對編程助手。
-
-AI 協助內容：
-
-- 需求分析與 NABCD 文件整理
-- 系統架構規劃
-- Flask API 設計討論
-- 前端功能設計討論
-- 程式錯誤分析與 Debug
-- 文件整理與格式調整
-
-所有 AI 產生內容皆經人工檢查、修改後整合至專案。
-
----
-
-# 文件
-
-目前包含：
-
-```
-docs/
-
-├── PSP.md
-├── NABCD.md
-└── prototype.md
+```text
+hw2/
+├── backend/
+│   ├── api.py
+│   ├── storage.py
+│   ├── search.py
+│   ├── detail.py
+│   ├── analysis.py
+│   ├── trend.py
+│   ├── crud.py
+│   ├── crawl_cvpr.py
+│   ├── crawl_cvpr_detail.py
+│   └── crawl_trend_data.py
+├── data/
+│   ├── papers.json
+│   └── trend_data.json
+├── tests/
+│   └── test_api.py
+├── frontend/
+│   ├── index.html
+│   ├── script.js
+│   └── style.css
+├── docs/
+├── data_cvpr2024.json
+├── cvpr2024_detail.json
+├── requirements.txt
+└── README.md
 ```
 
-其中：
+## 文件與目前限制
 
-- PSP.md：專案開發時間規劃與實際紀錄
-- NABCD.md：需求分析文件
-- prototype.md：Figma 原型設計說明
+- `docs/NABCD.md`：需求、方法、效益、競品與交付範圍。
+- `docs/PSP.md`：估算、實際工時與偏差紀錄。
+- `docs/evidence.md`：AI 結對編程案例與驗證證據。
+- `docs/test.md`：可重現的測試指令與結果紀錄。
+- `docs/prototype.md`：前端原型說明。
 
----
+目前仍未完成或不在本次收尾範圍的項目：
 
-# 目前限制
+- 其餘 2665 篇論文的完整詳細資料。
+- 完整、可驗證的 ECCV 與更多年份資料。
+- 雲端部署與正式服務環境驗證。
+- 自動化 CI/CD 與正式 release 流程；目前只整理本機可展示版本。
 
-目前尚未完成：
+## Git 工作方式
 
-- 論文新增、修改、刪除 CRUD 功能
-- 多頂會資料整合（ICCV、ECCV 等）
-- 多年份熱度趨勢動圖
-- 華為雲 CodeArts 部署
+本次收尾以目前檢出的分支與工作樹為準。提交前請執行測試並檢查：
 
-後續將依照作業需求持續擴充。
-
----
-
-# Git 開發紀錄
-
-目前採用 Git 進行版本管理。
-
-分支規劃：
-
-- dev：開發分支
-- main：穩定版本分支
-
-目前已完成：
-
-- 初始專案建立
-- CVPR 資料處理
-- 搜尋功能
-- 詳細資料展示
-- 熱門方向分析
-- 關鍵詞圖譜
-- 熱度趨勢分析
-- 文件整理
-- Prototype 設計
-
-目前累積：
-
-```
-17 commits
+```powershell
+git status
+git diff --check
+git log --oneline -5
 ```
