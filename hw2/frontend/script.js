@@ -244,3 +244,39 @@ function deletePaper() {
 loadTopics();
 loadKeywordNetwork();
 setTimeout(loadTrendChart, 500);
+
+function loadAnnualTrendChart() {
+    requestJson("/trend?top=5")
+        .then(data => {
+            const annualTrendChart = echarts.init(
+                document.getElementById("annual-trend-chart")
+            );
+
+            annualTrendChart.setOption({
+                title: { text: '歷年 Top 5 熱點領域變化' },
+                tooltip: { trigger: "axis", axisPointer: { type: 'shadow' } },
+                legend: {
+                    type: "scroll",
+                    top: 30,
+                    data: data.series.map(item => item.name)
+                },
+                xAxis: {
+                    type: "category",
+                    data: data.years
+                },
+                yAxis: { type: "value" },
+                series: data.series.map(s => ({
+                    name: s.name,
+                    type: "bar",
+                    stack: "total",
+                    data: s.data
+                }))
+            });
+        })
+        .catch(error => {
+            const el = document.getElementById("annual-trend-chart");
+            if(el) el.textContent = error.message;
+        });
+}
+
+setTimeout(loadAnnualTrendChart, 800);
