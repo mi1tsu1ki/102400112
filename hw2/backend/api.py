@@ -24,13 +24,19 @@ from backend.crud import (
 )
 from backend.storage import DuplicatePaperError, PaperValidationError
 
-app = Flask(__name__)
+FRONTEND_ROOT = PROJECT_ROOT / "frontend"
+
+app = Flask(
+    __name__,
+    static_folder=str(FRONTEND_ROOT),
+    static_url_path="",
+)
 CORS(app)
 
 
 @app.route("/")
 def home():
-    return "CVPR 2024 Paper Search API"
+    return (FRONTEND_ROOT / "index.html").read_text(encoding="utf-8")
 
 
 @app.route("/search")
